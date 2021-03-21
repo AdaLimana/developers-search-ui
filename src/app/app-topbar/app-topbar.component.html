@@ -1,0 +1,24 @@
+<div class="app-topbar">
+
+    <div class="app-topbar-row">
+        
+        <div class="app-log">
+            <a>
+                <img src="assets/layout/images/logo.png" alt="logo">
+            </a>
+        </div>
+        <div class="app-name"></div>
+
+        <div class="app-spacer"></div>
+
+        <p-menubar [model]="items"></p-menubar>
+
+        <button 
+            type="button" pButton pRipple
+            class="p-button-rounded p-button-secundary p-button-outlined"
+            icon="pi pi-user"
+            (click)="menu.toggle($event)">
+        </button>
+        <p-menu #menu [popup]="true" [model]="itemsAccount"></p-menu>
+    </div>
+</div>

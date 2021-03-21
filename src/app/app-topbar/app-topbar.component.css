@@ -1,0 +1,77 @@
+:host{
+    width: 100%;
+    position: fixed;
+    z-index: 10000;
+    color: var(--text-color);
+}
+
+:host .app-topbar{
+    display: flex;
+    flex-direction: column;
+}
+
+:host .app-topbar .app-spacer{
+    flex: 1 1 auto;
+}
+
+:host .app-topbar .app-topbar-row{
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 16px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    height: 60px;
+}
+
+:host .app-topbar .app-topbar-row::ng-deep .p-menubar{
+    border: 0!important;
+}
+
+:host .app-topbar .app-topbar-row::ng-deep .p-menubar p-menubarsub ul.p-submenu-list{
+    width: 200px;
+}
+
+:host .app-topbar .app-topbar-row::ng-deep .p-menubar p-menubarsub ul.p-menubar-root-list{
+    width: auto;
+}
+
+@media screen and (max-width: 960px){
+    :host .app-topbar .app-topbar-row::ng-deep .p-menubar.p-menubar-mobile-active .p-menubar-root-list{
+        right: 0px;
+        left: auto;
+    }
+}
+
+.app-topbar .app-logo{
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.app-topbar .app-logo img{
+    width: 173px;
+    margin-top: 5px;
+}
+
+.app-topbar .app-name{
+    display: inline-block;
+    font-size: 32px;
+    vertical-align: middle;
+    margin-left: 8px;
+    font-weight: bold;
+    opacity: 0.6;
+}
+
+.app-topbar .app-name:focus{
+    opacity: 1;
+}
+
+.app-topbar .app-name:hover{
+    opacity: 1;
+}
