@@ -1,0 +1,8 @@
+:host{
+    width: 100%;
+}
+
+.app-footer{
+    color: var(--text-color);
+    opacity: 0.6;
+}
