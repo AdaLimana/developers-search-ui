@@ -1,0 +1,192 @@
+<p-card styleClass="p-mt-3">
+
+    <p-toolbar>
+
+        <ng-template pTemplate="left">
+            <button
+                *ngIf="!disableCreate"
+                (click)="_create()"
+                pButton pRipple type="button" label="Adicionar" icon="pi pi-plus" class="p-button-raised p-mr-2"
+            ></button>
+
+            <button
+                *ngIf="!disableView && selectedItem && selectedItem['disableView'] !== true"
+                (click)="_view(selectedItem)"
+                pButton pRipple type="button" label="Ver" icon="pi pi-eye" class="p-button-raised p-button-info p-mr-2"
+            ></button>
+
+            <button
+                *ngIf="!disableEdit && selectedItem && selectedItem['disableEdit'] !== true"
+                (click)="_edit(selectedItem)"
+                pButton pRipple type="button" label="Editar" icon="pi pi-pencil" class="p-button-raised p-button-secondary p-mr-2"
+            ></button>
+
+            <button
+                *ngIf="externalActionTemplate && selectedItem && selectedItem['disableExternalAction'] !== true"
+                (click)="_externalAction(selectedItem)"
+                pButton pRipple type="button" [class]="externalActionTemplate.class +' p-mr-2'"
+                [icon]="externalActionTemplate.icon" [label]="externalActionTemplate.title"
+            >
+            </button>
+
+            <button
+                *ngIf="!disableDelete && selectedItem && selectedItem['disableDelete'] !== true"
+                (click)="_delete(selectedItem)"
+                pButton type="button" label="Excluir" icon="pi pi-times" class="p-button-raised p-button-danger"
+            ></button>
+        </ng-template>
+
+    </p-toolbar>
+
+    <p-table
+        #table
+        [columns]="columns"
+        [value]="data"
+        [totalRecords]="totalRecords"
+        [paginator]="table.totalRecords > table.rows || true"
+        [loading]="loading"
+        [rows]="10"
+        [rowsPerPageOptions]="[5,10,20,50,100]"
+        selectionMode="sibgle"
+        styleClass="p-datatable-striped p-datatable-gridlines p-datatable-responsive-demo"
+        [lazy]="true"
+        (onLazyLoad)="_updateTable($event)"
+        [(selection)]="selectedItem"
+    >
+
+        <ng-template pTemplate="caption">
+
+            <div class="p-d-flex p-ai-center p-jc-between p-flex-wrap">
+
+                <h2 class="p-m-0 p-pt-1">{{pageName}}</h2>
+
+                <div class="p-pt-1" *ngIf="(totalRecords > 0); then withRecords else withoutRecords"></div>
+
+                <ng-template #withRecords>
+                    <div style="text-align: right">
+                        Total de {{totalRecords}} registros encontrados
+                    </div>
+                </ng-template>
+
+                <ng-template #withoutRecords>
+                    <div style="text-align: right">
+                        Nenhum registro encontrado
+                    </div>
+                </ng-template>
+
+            </div>
+
+        </ng-template>
+
+        <ng-template pTemplate="header" let-columns>
+
+            <tr>
+                <th
+                    *ngFor="let col of columns"
+                    class="p-text-uppercase"
+                >
+                    {{col.header}}
+
+                </th>
+                <th><!--COLUNA PARA OS BOTÕES DE AÇÃO--></th>
+            </tr>
+
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+
+            <tr>
+                <th [attr.colspan]="columns.length+1">
+                    <div> ...Nenhum registro encontrado</div>
+                </th>
+            </tr>
+
+        </ng-template>
+
+        <ng-template pTemplate="body" let-rowData>
+
+            <tr [pSelectableRow]="rowData">
+
+                <td class="column-data" *ngFor="let col of columns" >
+
+                    <span class="p-column-title">{{col.header}}</span>
+                    <ng-container [ngSwitch]="col?.type ?col.type :''">
+
+                        <ng-container *ngSwitchCase="'date'">
+                            {{ (rowData[col.field] !== null && rowData[col.field] !== undefined) ?(rowData[col.field] | date:'shortDate') :""}}
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="'datetime'">
+                            {{ (rowData[col.field] !== null && rowData[col.field] !== undefined) ?(rowData[col.field] | date:'short') :""}}
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="'number'">
+                            {{rowData[col.field] | number}}
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="'percent'">
+                            {{rowData[col.field] | number}} %
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="'currency'">
+                            {{rowData[col.field] | currency}}
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="'select'">
+                            {{rowData[col.field]}}
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="'template'">
+
+                            <ng-container *ngTemplateOutlet="columnTemplate, context: {rowData: rowData, column: col}">
+                            </ng-container>
+
+                        </ng-container>
+
+                        <ng-container *ngSwitchDefault>
+                            {{rowData[col.field]}}
+                        </ng-container>
+
+                    </ng-container>
+
+                </td>
+
+                <td>
+
+                    <button
+                        *ngIf="!disableView && rowData['disableView'] !== true"
+                        (click)="_view(rowData)"
+                        pButton pRipple type="button" class="p-button-raised p-button-info p-mr-2 p-mb-2" icon="pi pi-eye"
+                        attr.title="Clique para Ver"
+                    ></button>
+
+                    <button
+                        *ngIf="!disableEdit && rowData['disableEdit'] !== true"
+                        (click)="_edit(rowData)"
+                        pButton pRipple type="button" class="p-button-raised p-button-secondary p-mr-2 p-mb-2" icon="pi pi-pencil"
+                        attr.title="Clique para Editar"
+                    ></button>
+
+                    <button
+                        *ngIf="externalActionTemplate && rowData['disableExternalAction'] !== true"
+                        (click)="_externalAction(rowData)"
+                        pButton pRipple type="button" [class]="externalActionTemplate.class +' p-mr-2 p-mb-2'" [icon]="externalActionTemplate.icon"
+                        [attr.title]="externalAction.title"
+                    >
+                    </button>
+
+                    <button
+                        *ngIf="!disableDelete && rowData['disableDelete'] !== true"
+                        (click)="_delete(rowData)"
+                        pButton pRipple type="button" class="p-button-raised p-button-danger p-mr-2 p-mb-2" icon="pi pi-trash"
+                        attr.title="Clique para Excluir"
+                    ></button>
+                </td>
+
+            </tr>
+
+        </ng-template>
+
+    </p-table>
+
+</p-card>
