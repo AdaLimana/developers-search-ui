@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@adalimana/ajlng": "^0.0.1",
     "@angular/animations": "~11.2.4",
     "@angular/common": "~11.2.4",
     "@angular/compiler": "~11.2.4",
