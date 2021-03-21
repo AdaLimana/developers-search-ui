@@ -9,12 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppTopbarComponent } from './app-topbar/app-topbar.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
+import { AppMainComponent } from './app-main/app-main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppTopbarComponent,
-    AppFooterComponent
+    AppFooterComponent,
+    AppMainComponent
   ],
   imports: [
     BrowserModule,

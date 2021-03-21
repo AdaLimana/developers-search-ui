@@ -1,0 +1,16 @@
+:host{
+    background-color: #e5e9ec;
+}
+
+.app-layout-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.app-layout-main {
+    padding: 2rem;
+    padding-top: 4rem;
+    flex: 1 1 0;
+}
