@@ -1,8 +1,5 @@
-:host{
-    background-color: #e5e9ec;
-}
-
 .app-layout-wrapper{
+    background-color: var(--surface-b);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

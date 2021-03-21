@@ -8,6 +8,7 @@
 :host .app-topbar{
     display: flex;
     flex-direction: column;
+    background-color: var(--surface-a);
 }
 
 :host .app-topbar .app-spacer{
@@ -22,7 +23,6 @@
     flex-direction: row;
     align-items: center;
     white-space: nowrap;
-    height: 60px;
 }
 
 :host .app-topbar .app-topbar-row::ng-deep .p-menubar{
