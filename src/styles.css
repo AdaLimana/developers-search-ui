@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Faz o tamanho levar em conta até a borda, ou seja, o width será a soma do conteúdo com a borda e o padding*/
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: var(--font-family);
+    font-weight: 400;
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+}
