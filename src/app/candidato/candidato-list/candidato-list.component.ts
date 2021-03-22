@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Column } from 'src/app/core/api/column';
 import { CandidatoService } from "../candidato.service";
 import { PageNavigationService } from "@adalimana/ajlng/src/lib/api";
 import { ConfirmationService } from 'primeng/api';
 import { ListPageService } from 'src/app/core/api/list-page.service';
+import { CoreListPageComponent } from 'src/app/core/core-list-page/core-list-page.component';
 
 @Component({
   selector: 'candidato-list',
@@ -23,6 +24,10 @@ export class CandidatoListComponent implements OnInit {
   public totalRecords: number = 3;
   public loading: boolean = true;
   public blocked: boolean = false;
+  public habilidadeOptions: any[] = [];
+  public selectedHabilidades: any[] = [];
+
+  @ViewChild('listPage', {static: false}) listPage: CoreListPageComponent;
 
   constructor(
     private candidatoService: CandidatoService,
@@ -31,7 +36,10 @@ export class CandidatoListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
     this.loading = false
+    this.inicializeOptions();
+
   }
 
   public create(){
@@ -68,6 +76,11 @@ export class CandidatoListComponent implements OnInit {
 
   public getData(parameters: string = ''){
     
+    if(this.selectedHabilidades?.length > 0){
+      parameters += (parameters === '') ? '?' : '&'; 
+      parameters += `filters[habilidades]=${this.selectedHabilidades.join('|')}`;
+    }
+    
     this.loading = true;
     this.candidatoService.getAll(parameters)
         .subscribe(
@@ -80,6 +93,22 @@ export class CandidatoListComponent implements OnInit {
             this.listPageService.showErrorMessage(error.error);
             this.loading = false;
           }
+        );
+  }
+
+  public applyFilters(){
+    //faz com que a table atualize e assim o component
+    //ListPage dispara metodo updateTable, o qual retorna
+    //os parametros (paginacao) setados da tabela
+    this.listPage.table.filter(null, null, null);
+  }
+
+  private inicializeOptions(){
+
+    this.candidatoService
+        .getHabilidades()
+        .subscribe(
+          response => this.habilidadeOptions = response
         );
   }
 

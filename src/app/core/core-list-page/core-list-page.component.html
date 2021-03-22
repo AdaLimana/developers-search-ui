@@ -76,6 +76,11 @@
 
             </div>
 
+            <div class="p-my-2">
+                <ng-container *ngTemplateOutlet="filtersTemplate">            
+                </ng-container>
+            </div>    
+
         </ng-template>
 
         <ng-template pTemplate="header" let-columns>

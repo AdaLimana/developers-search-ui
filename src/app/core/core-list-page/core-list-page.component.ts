@@ -73,7 +73,9 @@ export class CoreListPageComponent implements OnInit {
 
   @ViewChild('table', {static: false}) table: Table;
 
-  @ContentChild(TemplateRef) columnTemplate: TemplateRef<any>;
+  @ContentChild('columnTemplate', {static: false}) columnTemplate: TemplateRef<any>;
+
+  @ContentChild('filtersTemplate', {static: false}) filtersTemplate: TemplateRef<any>;
 
   public get data(): any[]{
     return this._data;

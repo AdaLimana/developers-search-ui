@@ -1,4 +1,5 @@
 <core-list-page
+    #listPage
     pageName="Candidatos"
     [columns]="columns"
     [data]="data"
@@ -10,6 +11,21 @@
     (updateTable)="getData($event)"
     disableView=true
 >
+
+    <ng-template #filtersTemplate>
+        <p-multiSelect 
+            [options]="habilidadeOptions" 
+            [(ngModel)]="selectedHabilidades" 
+            optionLabel="name"
+            optionValue="id"
+            selectedItemsLabel="{0} habilidades selecionadas"
+            [filter]="false"
+            [style]="{minWidth: '200px'}" 
+            placeholder="Filtrar por habilidades"
+            (onChange)="applyFilters()"
+        ></p-multiSelect>
+    </ng-template>
+
     <ng-template #columnTemplate let-rowData="rowData" let-column="column">
 
         <ng-container *ngIf="column.field === 'habilidades'">
