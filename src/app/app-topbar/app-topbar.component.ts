@@ -22,8 +22,7 @@ export class AppTopbarComponent implements OnInit {
       {
         label: 'Candidatos',
         icon: 'pi pi-fw pi-user-edit',
-        // routerLink: ['/candidatos'],
-        routerLink: ['#'],
+        routerLink: ['/candidatos']
       },
       {
         label: 'Recrutadores',
