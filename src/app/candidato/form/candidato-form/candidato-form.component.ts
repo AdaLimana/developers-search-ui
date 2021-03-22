@@ -73,6 +73,7 @@ export class CandidatoFormComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(300),
+          Validators.pattern('^(https:\\/\\/)?[a-z]{2,3}\\.linkedin\\.com\\/.*$')
         ]
       )
     );

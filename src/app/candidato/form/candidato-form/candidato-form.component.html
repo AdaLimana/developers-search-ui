@@ -47,12 +47,7 @@
         <!--IDADE-->
         <div class="p-field p-col-12 p-md-6">
             <span class="p-float-label">
-                <input
-                    id="idade"
-                    pInputText
-                    type="text"
-                    formControlName='idade'
-                >
+                <p-inputNumber id="idade" formControlName='idade'></p-inputNumber>
                 <label for="idade" [ajlIsRequired]="formGroup.controls['idade'].validator"> Idade </label>
             </span>    
             <ajl-input-error-message [control]="formGroup.controls['idade']" label="Idade" ></ajl-input-error-message>

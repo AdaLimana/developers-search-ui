@@ -32,6 +32,7 @@ import { RecrutadorUpdateComponent } from './recrutador/recrutador-update/recrut
 import { RecrutadorFormComponent } from './recrutador/form/recrutador-form/recrutador-form.component';
 import { RecrutadorListComponent } from './recrutador/recrutador-list/recrutador-list.component';
 import { RecrutadorCreateComponent } from './recrutador/recrutador-create/recrutador-create.component';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { RecrutadorCreateComponent } from './recrutador/recrutador-create/recrut
     InputTextModule,
     MultiSelectModule,
     CheckboxModule,
+    InputNumberModule,
     EqualsFormControlsModule,
     CoreModule,
     AppRoutingModule
