@@ -1,0 +1,76 @@
+<form class="p-col-12 p-fluid">
+
+    <div [formGroup]="formGroup" class="p-grid p-formgrid">
+    
+        <!--NOME-->
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input
+                    id="nome"
+                    pInputText
+                    type="text"
+                    formControlName='nome'
+                >
+                <label for="nome" [ajlIsRequired]="formGroup.controls['nome'].validator"> Nome </label>
+            </span>    
+            <ajl-input-error-message [control]="formGroup.controls['nome']" label="Nome" ></ajl-input-error-message>
+        </div> <!--NOME-->
+    
+        <!--EMAIL-->
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input
+                    id="email"
+                    pInputText
+                    type="text"
+                    formControlName='email'
+                >
+                <label for="email" [ajlIsRequired]="formGroup.controls['email'].validator"> Email </label>
+            </span>    
+            <ajl-input-error-message [control]="formGroup.controls['email']" label="Email" ></ajl-input-error-message>
+        </div> <!--EMAIL-->
+
+        <!--LINKEDIN-->
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input
+                    id="linkedin"
+                    pInputText
+                    type="text"
+                    formControlName='linkedin'
+                >
+                <label for="linkedin" [ajlIsRequired]="formGroup.controls['linkedin'].validator"> LinkedIn </label>
+            </span>    
+            <ajl-input-error-message [control]="formGroup.controls['linkedin']" label="LinkedIn" ></ajl-input-error-message>
+        </div> <!--LINKEDIN-->
+
+        <!--IDADE-->
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input
+                    id="idade"
+                    pInputText
+                    type="text"
+                    formControlName='idade'
+                >
+                <label for="idade" [ajlIsRequired]="formGroup.controls['idade'].validator"> Idade </label>
+            </span>    
+            <ajl-input-error-message [control]="formGroup.controls['idade']" label="Idade" ></ajl-input-error-message>
+        </div> <!--IDADE-->
+        
+        <!-- HABILIDADES -->
+        <div *ngIf="habilidadeOptions" class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <p-multiSelect 
+                    id="habilidades" 
+                    selectedItemsLabel="{0} colunas não exibidas" 
+                    [options]="habilidadeOptions" optionLabel="name" dataKey="id"
+                    formControlName="habilidades"
+                ></p-multiSelect>
+                <label for="habilidades" [ajlIsRequired]="formGroup.controls['habilidades'].validator"> Habilidades </label>
+            </span>    
+            <ajl-input-error-message [control]="formGroup.controls['habilidades']" label="Habilidades" ></ajl-input-error-message>
+        </div><!--HABILIDADES -->
+
+    </div>
+</form>

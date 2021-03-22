@@ -22,6 +22,8 @@ import { AppTopbarComponent } from './app-topbar/app-topbar.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
 import { AppMainComponent } from './app-main/app-main.component';
 import { CandidatoListComponent } from './candidato/candidato-list/candidato-list.component';
+import { CandidatoFormComponent } from './candidato/form/candidato-form/candidato-form.component';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { CandidatoListComponent } from './candidato/candidato-list/candidato-lis
     AppFooterComponent,
     AppMainComponent,
     CandidatoListComponent,
+    CandidatoFormComponent,
   ],
   imports: [
     BrowserModule,
