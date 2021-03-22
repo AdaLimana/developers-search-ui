@@ -24,8 +24,7 @@ export class AuthenticationService {
   }
 
   redirectToLogin(){
-      this.state = this.router.routerState.snapshot;
-      this.router.navigate(['/authentication'], { queryParams: { returnUrl: this.state.url }});
+      this.router.navigate(['/authentication']);
   }
 
   userSession(): Observable<any>{
