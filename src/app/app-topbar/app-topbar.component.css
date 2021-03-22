@@ -29,6 +29,7 @@
 :host .app-topbar .app-topbar-row::ng-deep .p-menubar{
     border: 0!important;
     height: 60px;
+    background-color: var(--surface-a);
 }
 
 :host .app-topbar .app-topbar-row::ng-deep .p-menubar p-menubarsub ul.p-submenu-list{

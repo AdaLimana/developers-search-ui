@@ -1,0 +1,14 @@
+/*Ajustar tamanho dos botões dos painéis de ação, quando a tela ficar pequena*/
+@media screen and (max-width: 40rem){
+    .panel-buttons button span.p-button-label{
+        font-size: smaller;
+    }
+    .panel-buttons button {
+        flex-direction: column;
+        padding: 0.5rem 0.5rem;
+    }
+}
+
+::ng-deep .p-toolbar{
+    background-color: var(--surface-a);
+}

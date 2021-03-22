@@ -1,0 +1,30 @@
+<p-toolbar styleClass="p-mt-3">
+
+    <div class="p-col-12 p-d-flex p-jc-between">
+        <h2>{{pageName}}</h2>
+        <span>(*) Campos obrigatórios</span>
+    </div>
+
+    <div class="panel-buttons p-col-12">
+
+        <button [disabled]="saving || loading" (click)="save.emit($event)" pButton pRipple type="button" label="Salvar" title="Salvar" icon="pi pi-save" class="p-button-success p-mr-2"></button>
+        <button [disabled]="saving || loading" (click)="saveAndClose.emit($event)" pButton pRipple type="button" label="Salvar e Fechar" title="Salvar e Fechar" icon="pi pi-save" class="p-button-success p-mr-2"></button>
+        <button [disabled]="saving || loading" (click)="close.emit($event)" pButton type="button" label="Fechar" title="Fechar" icon="pi pi-times" class="p-button-danger"></button>
+
+    </div>
+
+</p-toolbar>
+
+<p-card styleClass="p-mt-3 background_gradient--grey">
+
+    <ng-container *ngIf="saving !== true && loading !== true">
+        <ng-container *ngTemplateOutlet="formRef">
+        </ng-container>
+    </ng-container>
+
+
+    <div *ngIf="saving || loading" style="height: 350px;" class="p-d-flex p-jc-center p-ai-center">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+
+</p-card>
