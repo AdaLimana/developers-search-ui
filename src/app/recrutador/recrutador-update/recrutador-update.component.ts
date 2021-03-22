@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UpdatePageService } from 'src/app/core/api/update-page.service';
-import { CandidatoService } from '../candidato.service';
+import { RecrutadorService } from '../recrutador.service';
 
 @Component({
-  selector: 'candidato-update',
-  templateUrl: './candidato-update.component.html',
-  styleUrls: ['./candidato-update.component.css']
+  templateUrl: './recrutador-update.component.html',
+  styleUrls: ['./recrutador-update.component.css']
 })
-export class CandidatoUpdateComponent implements OnInit {
+export class RecrutadorUpdateComponent implements OnInit {
 
-  public candidato: any;
+  public recrutador: any;
 
   public saving: boolean = false;
   public loading: boolean = true;
@@ -20,23 +19,23 @@ export class CandidatoUpdateComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private candidatoService: CandidatoService,
+    private recrutadorService: RecrutadorService,
     private updatePageService: UpdatePageService
   ) { }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({});
-    this.getCandidato();
+    this.getRecrutador();
   }
 
-  public getCandidato(){
+  public getRecrutador(){
 
     const id = +this.route.snapshot.paramMap.get('id');
 
-    this.candidatoService.getById(id)
+    this.recrutadorService.getById(id)
         .subscribe(
           response => {
-            this.candidato = response;
+            this.recrutador = response;
             this.loading = false;
           },
           error => {
@@ -54,14 +53,14 @@ export class CandidatoUpdateComponent implements OnInit {
 
         const values = this.formGroup.value;
         this.saving = true;
-        this.candidatoService.update(values)
+        this.recrutadorService.update(values)
             .subscribe(
               response => {
-                this.updatePageService.showSuccessMessage(['Candidato atualizado com sucesso']);
-                this.candidatoService.getById(response.id)
+                this.updatePageService.showSuccessMessage(['Recrutador atualizado com sucesso']);
+                this.recrutadorService.getById(response.id)
                     .subscribe(
                       response => {
-                        this.candidato = response;
+                        this.recrutador = response;
                         this.formGroup = new FormGroup({});
                         this.saving = false;
                       },
@@ -91,11 +90,11 @@ export class CandidatoUpdateComponent implements OnInit {
       const values = this.formGroup.value;
       this.saving = true;
 
-      this.candidatoService.update(values)
+      this.recrutadorService.update(values)
           .subscribe(
             response => {
               this.saving = false;
-              this.updatePageService.showSuccessMessage(['Candidato atualizado com sucesso']);
+              this.updatePageService.showSuccessMessage(['Recrutador atualizado com sucesso']);
               this.updatePageService.closePage();
             },
             error => {

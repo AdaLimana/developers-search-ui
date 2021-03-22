@@ -1,0 +1,20 @@
+<core-form-page
+    pageName="Edição Recrutador"
+    (saveAndClose)="saveAndClose()"
+    (save)="save()"
+    (close)="close()"
+    [saving]="saving"
+    [loading]="loading"
+>
+
+    <ng-template #form>
+
+        <recrutador-form 
+            *ngIf="recrutador !== undefined"
+            [formGroup]="formGroup" 
+            [recrutador]="recrutador"
+        ></recrutador-form>
+
+    </ng-template>
+
+</core-form-page>

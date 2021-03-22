@@ -1,0 +1,140 @@
+<form class="p-col-12 p-fluid">
+
+    <div [formGroup]="formGroup" class="p-grid p-formgrid">
+
+        <!--EMAIL-->
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input
+                    id="email"
+                    pInputText
+                    type="text"
+                    formControlName='email'
+                >
+                <label for="email" [ajlIsRequired]="formGroup.controls['email'].validator"> Email </label>
+            </span>    
+            <ajl-input-error-message [control]="formGroup.controls['email']" label="Email" ></ajl-input-error-message>
+        </div> <!--EMAIL-->
+
+        <!--SENHA-->
+        <div 
+            *ngIf="formGroup.controls['password'].enabled" 
+            class="p-field p-col-12 p-md-6"
+        >
+            <span class="p-float-label">
+                <input
+                    id="password"
+                    pInputText
+                    type="password"
+                    formControlName='password'
+                >
+                <label for="password" [ajlIsRequired]="formGroup.controls['password'].validator"> Senha </label>
+            </span>
+            <small
+                *ngIf="formGroup.controls['passwordComparation'].hasError('ajlNotEqualsFormControls')"
+                class="p-error"
+            >
+                A senha não é igual
+            </small>
+            <ajl-input-error-message [control]="formGroup.controls['password']" label="Senha" ></ajl-input-error-message>
+        </div> <!--SENHA-->
+
+        <!--CONFIRMAR SENHA-->
+        <div 
+            *ngIf="formGroup.controls['passwordComparation'].enabled" 
+            class="p-field p-col-12 p-md-6"
+        >
+            <span class="p-float-label">
+                <input
+                    id="passwordComparation"
+                    pInputText
+                    type="password"
+                    formControlName='passwordComparation'
+                    ajlEqualsFormControls="password"
+                >
+                <label for="passwordComparation" [ajlIsRequired]="formGroup.controls['passwordComparation'].validator"> Confirmar Senha </label>
+            </span>
+            <small
+                *ngIf="formGroup.controls['passwordComparation'].hasError('ajlNotEqualsFormControls')"
+                class="p-error"
+            >
+                A senha não é igual
+            </small>
+            <ajl-input-error-message [control]="formGroup.controls['passwordComparation']" label="Confirmar Senha" ></ajl-input-error-message>
+        </div> <!--CONFIRMAR SENHA-->
+
+        <!-- ALTERAR SENHA -->
+        <div
+            *ngIf="formGroup.controls['changePassword'].enabled" 
+            class='p-field p-col-12'
+        >
+            <p-checkbox name="changePassword" label="Alterar Senha" binary="true" [formControl]="formGroup.controls['changePassword']"></p-checkbox>
+        </div> <!-- ALTERAR SENHA -->
+
+        <!--SENHA ATUAL-->
+        <div 
+            *ngIf="formGroup.controls['oldPassword'].enabled" 
+            class="p-field p-col-12 p-md-6"
+        >
+            <span class="p-float-label">
+                <input
+                    id="oldPassword"
+                    pInputText
+                    type="password"
+                    formControlName='oldPassword'
+                >
+                <label for="oldPassword" [ajlIsRequired]="formGroup.controls['oldPassword'].validator"> Senha Atual </label>
+            </span>
+            <ajl-input-error-message [control]="formGroup.controls['oldPassword']" label="Senha Atual" ></ajl-input-error-message>
+        </div> <!--SENHA ATUAL-->
+
+        <!--NOVA SENHA-->
+        <div 
+            *ngIf="formGroup.controls['newPassword'].enabled" 
+            class="p-field p-col-12 p-md-6"
+        >
+            <span class="p-float-label">
+                <input
+                    id="newPassword"
+                    pInputText
+                    type="password"
+                    formControlName='newPassword'
+                >
+                <label for="newPassword" [ajlIsRequired]="formGroup.controls['newPassword'].validator"> Nova Senha </label>
+            </span>    
+            <small
+                *ngIf="formGroup.controls['newPasswordComparation'].hasError('ajlNotEqualsFormControls')"
+                class="p-error"
+            >
+                A senha não é igual
+            </small>
+            <ajl-input-error-message [control]="formGroup.controls['newPassword']" label="Nova Senha" ></ajl-input-error-message>
+        </div> <!--NOVA SENHA-->
+        
+        <!--CONFIRMAR NOVA SENHA-->
+        <div 
+            *ngIf="formGroup.controls['newPasswordComparation'].enabled" 
+            class="p-field p-col-12 p-md-6"
+        >
+            <span class="p-float-label">
+                <input
+                    id="newPasswordComparation"
+                    pInputText
+                    type="password"
+                    formControlName='newPasswordComparation'
+                    ajlEqualsFormControls="newPassword"
+                >
+                <label for="newPasswordComparation" [ajlIsRequired]="formGroup.controls['newPasswordComparation'].validator"> Confirmar Nova Senha </label>
+            </span>
+            <small
+                *ngIf="formGroup.controls['newPasswordComparation'].hasError('ajlNotEqualsFormControls')"
+                class="p-error"
+            >
+                A senha não é igual
+            </small>
+            <ajl-input-error-message [control]="formGroup.controls['newPasswordComparation']" label="Confirmar Nova Senha" ></ajl-input-error-message>
+        </div> <!--CONFIRMAR NOVA SENHA-->
+
+    </div>
+
+</form>

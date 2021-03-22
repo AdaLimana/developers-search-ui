@@ -13,6 +13,8 @@ import { InputErrorMessageModule } from '@adalimana/ajlng/src/lib/input-error-me
 import { IsRequiredModule } from '@adalimana/ajlng/src/lib/is-required';
 import { InputTextModule } from 'primeng/inputtext';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { CheckboxModule } from 'primeng/checkbox';
+import { EqualsFormControlsModule } from '@adalimana/ajlng/src/lib/equals-form-controls'
 
 
 import { CoreModule } from './core/core.module';
@@ -26,6 +28,8 @@ import { CandidatoFormComponent } from './candidato/form/candidato-form/candidat
 import { CandidatoCreateComponent } from './candidato/candidato-create/candidato-create.component';
 import { CandidatoUpdateComponent } from './candidato/candidato-update/candidato-update.component';
 import { AppLoginComponent } from './app-login/app-login.component';
+import { RecrutadorUpdateComponent } from './recrutador/recrutador-update/recrutador-update.component';
+import { RecrutadorFormComponent } from './recrutador/form/recrutador-form/recrutador-form.component';
 
 
 @NgModule({
@@ -39,6 +43,8 @@ import { AppLoginComponent } from './app-login/app-login.component';
     CandidatoCreateComponent,
     CandidatoUpdateComponent,
     AppLoginComponent,
+    RecrutadorUpdateComponent,
+    RecrutadorFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +61,8 @@ import { AppLoginComponent } from './app-login/app-login.component';
     IsRequiredModule,
     InputTextModule,
     MultiSelectModule,
+    CheckboxModule,
+    EqualsFormControlsModule,
     CoreModule,
     AppRoutingModule
   ],
