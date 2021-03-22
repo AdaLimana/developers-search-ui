@@ -1,0 +1,48 @@
+<div
+    class="login-body p-grid p-d-flex p-ai-center p-jc-center"
+    style="min-height: 98vh;"
+    [formGroup]="formGroup"
+>
+
+    <div
+        class="login-panel p-fluid p-grid p-col-10 p-md-6 p-lg-4 p-shadow-4 p-as-center"
+        style="min-height: 50vh;"
+    >
+
+        <img alt="DEVS SEARCH" src="assets/images/03-logo.png">
+
+        <ng-container *ngIf="!loading">
+
+            <!-- USUARIO -->
+            <div class="p-col-12 p-mt-0">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-user"></i>
+                    <input #usernameInput pInputText type="text" formControlName="username" placeholder="Email">
+                </span>
+                <ajl-input-error-message [control]="formGroup.controls['username']" label="Email"></ajl-input-error-message>
+            </div><!-- USUARIO -->
+
+            <!-- PASSWORD -->
+            <div class="p-col-12">
+                <span class="p-input-icon-left p-input-icon-right">
+                    <i class="pi pi-lock"></i>
+                    <input pInputText type="text" [type]="hidePassword ? 'password' : 'text'" formControlName="password" (keyup.enter)="submit()" placeholder="Senha">
+                    <i  class="pi" [ngClass]="{'pi-eye-slash': !hidePassword, 'pi-eye': hidePassword}"
+                        (click)="toogleFieldTypeInputPassword()"
+                    ></i>
+                </span>
+                <ajl-input-error-message [control]="formGroup.controls['password']" label="Senha" ></ajl-input-error-message>
+            </div><!-- PASSWORD -->
+
+            <div class="p-col-12 p-pb-0 button-container">
+                <button type="button" title="Entrar no sistema" label="Entrar" pButton (click)="submit()"></button>
+            </div>
+
+        </ng-container>
+
+        <div *ngIf="loading" style="height: 25vh;" class="p-col-12 p-d-flex p-jc-center p-ai-center">
+            <p-progressSpinner></p-progressSpinner>
+        </div>
+
+    </div>
+</div>
