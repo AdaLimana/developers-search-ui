@@ -24,6 +24,7 @@ import { AppMainComponent } from './app-main/app-main.component';
 import { CandidatoListComponent } from './candidato/candidato-list/candidato-list.component';
 import { CandidatoFormComponent } from './candidato/form/candidato-form/candidato-form.component';
 import { CandidatoCreateComponent } from './candidato/candidato-create/candidato-create.component';
+import { CandidatoUpdateComponent } from './candidato/candidato-update/candidato-update.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { CandidatoCreateComponent } from './candidato/candidato-create/candidato
     AppMainComponent,
     CandidatoListComponent,
     CandidatoFormComponent,
-    CandidatoCreateComponent
+    CandidatoCreateComponent,
+    CandidatoUpdateComponent,
   ],
   imports: [
     BrowserModule,

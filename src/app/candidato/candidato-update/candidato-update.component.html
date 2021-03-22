@@ -1,0 +1,20 @@
+<core-form-page
+    pageName="Edição Candidato"
+    (saveAndClose)="saveAndClose()"
+    (save)="save()"
+    (close)="close()"
+    [saving]="saving"
+    [loading]="loading"
+>
+
+    <ng-template #form>
+
+        <candidato-form 
+            *ngIf="candidato !== undefined" 
+            [candidato]="candidato"
+            [formGroup]="formGroup"
+        ></candidato-form>
+
+    </ng-template>
+
+</core-form-page>
