@@ -8,6 +8,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner'
 
 import { CoreListPageComponent } from './core-list-page/core-list-page.component';
 import { CoreFormPageComponent } from './core-form-page/core-form-page.component';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -27,6 +28,9 @@ import { CoreFormPageComponent } from './core-form-page/core-form-page.component
   exports: [
     CoreListPageComponent,
     CoreFormPageComponent,
+  ],
+  providers: [
+    MessageService
   ]
 })
 export class CoreModule { }
