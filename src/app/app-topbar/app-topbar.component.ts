@@ -15,7 +15,32 @@ export class AppTopbarComponent implements OnInit {
 
   public itemsAccount: MenuItem[];
 
-  public active
+  public set admin(admin: boolean){
+    if(admin){
+      this.items = [
+        {
+          label: 'Candidatos',
+          icon: 'pi pi-fw pi-user-edit',
+          routerLink: ['/candidatos']
+        },
+        {
+          label: 'Recrutadores',
+          icon: 'pi pi-fw pi-user',
+          // routerLink: ['/recrutadores']
+          routerLink: ['#']
+        }
+      ];
+    }
+    else{
+      this.items = [
+        {
+          label: 'Candidatos',
+          icon: 'pi pi-fw pi-user-edit',
+          routerLink: ['/candidatos']
+        },
+      ];
+    }  
+  };
 
   constructor(
     private recrutadorSessionService: RecurtadorSessionService,
@@ -53,6 +78,11 @@ export class AppTopbarComponent implements OnInit {
       }
     ];
 
+    this.recrutadorSessionService
+        .getRecrutador()
+        .subscribe(
+          value => {this.admin = value.id == '1'}
+        )
   }
 
   public logout(){

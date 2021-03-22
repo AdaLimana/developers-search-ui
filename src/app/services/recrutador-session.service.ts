@@ -14,7 +14,7 @@ export class RecurtadorSessionService {
 	public readonly RECRUTADOR_KEY: string = "recrutador_ativo";
 
 	//Monitor de Recrutador ativo
-	private recrutadorBehaviorSubject = new BehaviorSubject<Recrutador>(new Recrutador());
+	private recrutadorBehaviorSubject: BehaviorSubject<Recrutador> = new BehaviorSubject<Recrutador>(new Recrutador());
 
 	constructor() { }
 
@@ -34,7 +34,8 @@ export class RecurtadorSessionService {
 	}
 
 	/*Retorna o recrutador selecionado*/
-	public obterRecrutador() {
+	public getRecrutador() :BehaviorSubject<Recrutador>
+	{
 		return this.recrutadorBehaviorSubject;
 	}
 
