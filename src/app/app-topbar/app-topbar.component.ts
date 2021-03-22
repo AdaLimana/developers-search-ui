@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api/menuitem';
+import { AuthenticationService } from '../services/authentication.service';
+import { RecurtadorSessionService } from '../services/recrutador-session.service';
 
 @Component({
   selector: 'app-topbar',
@@ -14,7 +17,12 @@ export class AppTopbarComponent implements OnInit {
 
   public active
 
-  constructor() { }
+  constructor(
+    private recrutadorSessionService: RecurtadorSessionService,
+    private authenticationService: AuthenticationService,
+		private route: ActivatedRoute,
+		private router: Router
+  ) { }
 
   ngOnInit(): void {
     
@@ -48,13 +56,29 @@ export class AppTopbarComponent implements OnInit {
   }
 
   public logout(){
-
-    console.log('efetuar logout');
+    this.authenticationService
+        .logout()
+        .then(
+          response => {
+            localStorage.removeItem(this.recrutadorSessionService.RECRUTADOR_KEY);
+            this.authenticationService.redirectToLogin();
+          }
+        )
   }
 
   public goToUserAccount(){
 
-    console.log('acessar a conta do usuario');
+    const recrutador = this.recrutadorSessionService.getRecrutadorAtivoFromStorage();
+
+    const returnUrl = this.route.snapshot['_routerState']['url'] ?? '/';
+
+    this.router.navigateByUrl(
+      this.router.createUrlTree(
+        [`/recrutadores/update/${recrutador.id}`],
+        {queryParams: {returnUrl: returnUrl}}
+      )
+    );
+
   }
 
 }
