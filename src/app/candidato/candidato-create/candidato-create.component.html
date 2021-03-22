@@ -1,0 +1,15 @@
+<core-form-page
+    pageName="Cadastro Candidato"
+    (saveAndClose)="saveAndClose()"
+    (save)="save()"
+    (close)="close()"
+    [saving]="saving"
+>
+
+    <ng-template #form>
+        
+        <candidato-form [formGroup]="formGroup"> </candidato-form>
+
+    </ng-template>
+
+</core-form-page>
