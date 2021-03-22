@@ -17,6 +17,7 @@ export class CandidatoListComponent implements OnInit {
     {field: 'nome', header: 'NOME', type: 'text'},
     {field: 'idade', header: 'IDADE', type: 'number'},
     {field: 'habilidades', header: 'HABILIDADES', type: 'template'},
+    {field: 'email', header: 'EMAIL', type: 'text'},
     {field: 'linkedin', header: 'LINKEDIN', type: 'text'}
   ];
 
