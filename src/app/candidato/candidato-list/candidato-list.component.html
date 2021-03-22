@@ -1,0 +1,25 @@
+<core-list-page
+    pageName="Candidatos"
+    [columns]="columns"
+    [data]="data"
+    [totalRecords]="totalRecords"
+    [loading]="loading"
+    (create)="create()"
+    (edit)="edit($event)"
+    (delete)="delete($event)"
+    (updateTable)="getData($event)"
+    disableView=true
+>
+    <ng-template #columnTemplate let-rowData="rowData" let-column="column">
+
+        <ng-container *ngIf="column.field === 'habilidades'">
+            <ng-container *ngFor="let habilidade of rowData[column.field]; let last = last">
+                {{habilidade.name}} <span *ngIf="!last"> ,</span>
+            </ng-container>
+        </ng-container>
+
+    </ng-template>
+
+</core-list-page>
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
