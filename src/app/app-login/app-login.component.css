@@ -1,9 +1,11 @@
 .login-body{
     position: relative;
-    height: 100%;
-    background-image: url('/assets/images/background_2.jpg');
+    /* height: 100%; */
+    background-image: url('/assets/images/background-login.jpg');
     background-size: cover;
     overflow: auto;
+    min-height: 102vh!important;
+    opacity: 0.8;
 }
 
 .login-panel{
