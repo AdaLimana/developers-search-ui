@@ -26,8 +26,7 @@ export class AppTopbarComponent implements OnInit {
         {
           label: 'Recrutadores',
           icon: 'pi pi-fw pi-user',
-          // routerLink: ['/recrutadores']
-          routerLink: ['#']
+          routerLink: ['/recrutadores']
         }
       ];
     }
@@ -60,8 +59,7 @@ export class AppTopbarComponent implements OnInit {
       {
         label: 'Recrutadores',
         icon: 'pi pi-fw pi-user',
-        // routerLink: ['/recrutadores']
-        routerLink: ['#']
+        routerLink: ['/recrutadores']
       }
     ];
 

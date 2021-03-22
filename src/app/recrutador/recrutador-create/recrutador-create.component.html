@@ -1,0 +1,15 @@
+<core-form-page
+    pageName="Cadastro Recrutador"
+    (saveAndClose)="saveAndClose()"
+    (save)="save()"
+    (close)="close()"
+    [saving]="saving"
+>
+
+    <ng-template #form>
+        
+        <recrutador-form [formGroup]="formGroup"> </recrutador-form>
+
+    </ng-template>
+
+</core-form-page>

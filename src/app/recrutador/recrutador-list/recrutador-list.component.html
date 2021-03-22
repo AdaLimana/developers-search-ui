@@ -1,0 +1,17 @@
+<core-list-page
+    #listPage
+    pageName="Recrutadores"
+    [columns]="columns"
+    [data]="data"
+    [totalRecords]="totalRecords"
+    [loading]="loading"
+    (create)="create()"
+    (edit)="edit($event)"
+    (delete)="delete($event)"
+    (updateTable)="getData($event)"
+    disableView=true
+>
+
+</core-list-page>
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>

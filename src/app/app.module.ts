@@ -30,6 +30,8 @@ import { CandidatoUpdateComponent } from './candidato/candidato-update/candidato
 import { AppLoginComponent } from './app-login/app-login.component';
 import { RecrutadorUpdateComponent } from './recrutador/recrutador-update/recrutador-update.component';
 import { RecrutadorFormComponent } from './recrutador/form/recrutador-form/recrutador-form.component';
+import { RecrutadorListComponent } from './recrutador/recrutador-list/recrutador-list.component';
+import { RecrutadorCreateComponent } from './recrutador/recrutador-create/recrutador-create.component';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { RecrutadorFormComponent } from './recrutador/form/recrutador-form/recru
     AppLoginComponent,
     RecrutadorUpdateComponent,
     RecrutadorFormComponent,
+    RecrutadorListComponent,
+    RecrutadorCreateComponent,
   ],
   imports: [
     BrowserModule,
