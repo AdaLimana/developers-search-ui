@@ -4,7 +4,7 @@
         
         <div class="app-logo">
             <a>
-                <img src="assets/images/01-logo.png" alt="logo">
+                <img id="app-logo" src="assets/images/logo-light.png" alt="logo">
             </a>
         </div>
         <div class="app-name"></div>
@@ -12,6 +12,14 @@
         <div class="app-spacer"></div>
 
         <p-menubar [model]="items"></p-menubar>
+
+        <button 
+            pButton pRipple type="button" 
+            icon="pi {{dark ?'pi-sun' :'pi-moon'}}" 
+            class="p-button-rounded p-button-outlined p-mr-2"
+            [ngClass]="{'p-button-warning': dark, 'p-button-info': !dark}"
+            (click)="changeTheme()"
+        ></button>
 
         <button 
             type="button" pButton pRipple

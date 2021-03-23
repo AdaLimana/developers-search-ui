@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api/menuitem';
 import { AuthenticationService } from '../services/authentication.service';
 import { RecurtadorSessionService } from '../services/recrutador-session.service';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-topbar',
@@ -14,6 +15,8 @@ export class AppTopbarComponent implements OnInit {
   public items: MenuItem[];
 
   public itemsAccount: MenuItem[];
+
+  public dark: boolean = false;
 
   public set admin(admin: boolean){
     if(admin){
@@ -42,6 +45,7 @@ export class AppTopbarComponent implements OnInit {
   };
 
   constructor(
+    private themeSercvice: ThemeService,
     private recrutadorSessionService: RecurtadorSessionService,
     private authenticationService: AuthenticationService,
 		private route: ActivatedRoute,
@@ -107,6 +111,12 @@ export class AppTopbarComponent implements OnInit {
       )
     );
 
+  }
+
+  public changeTheme(){
+
+    this.dark = !this.dark;
+    this.themeSercvice.setTheme(this.dark ?'dark' :'light');
   }
 
 }
