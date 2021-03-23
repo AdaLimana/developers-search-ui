@@ -22,6 +22,7 @@ export class AppLoginComponent implements OnInit {
    */
   public hidePassword : boolean = true;
 
+  public backgroundImage: string = '';
 
   @ViewChild('usernameInput') public usernameInput: ElementRef;
 
@@ -34,9 +35,10 @@ export class AppLoginComponent implements OnInit {
   ){ }
 
   ngOnInit(): void {
-
+    
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.formGroup = this.createFormGroup();
+    this.backgroundImage = this.getBackgroundImage();
   }
 
   ngAfterViewInit () {
@@ -90,7 +92,7 @@ export class AppLoginComponent implements OnInit {
     }
   }
 
-  public getBackgroundImage(){
+  private getBackgroundImage(){
     return  `url(assets/images/background-login-${1+Math.floor(Math.random()*7)}.jpg)`;
   }
 
