@@ -90,6 +90,10 @@ export class AppLoginComponent implements OnInit {
     }
   }
 
+  public getBackgroundImage(){
+    return  `url(assets/images/background-login-${1+Math.floor(Math.random()*7)}.jpg)`;
+  }
+
   private createFormGroup(): FormGroup{
 
     const formGroup = new FormGroup({});
@@ -118,4 +122,5 @@ export class AppLoginComponent implements OnInit {
 
     return formGroup;
   }
+
 }

@@ -2,6 +2,7 @@
     class="login-body p-grid p-d-flex p-ai-center p-jc-center"
     style="min-height: 98vh;"
     [formGroup]="formGroup"
+    [ngStyle]="{'background-image': getBackgroundImage()}"
 >
 
     <div
@@ -9,7 +10,7 @@
         style="min-height: 50vh;"
     >
 
-        <img alt="DEVS SEARCH" src="assets/images/01-logo.png">
+        <img class="p-ml-2" alt="DEVS SEARCH" src="assets/images/logo-dark.png">
 
         <ng-container *ngIf="!loading">
 

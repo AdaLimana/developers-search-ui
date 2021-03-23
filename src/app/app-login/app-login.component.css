@@ -1,14 +1,9 @@
 .login-body{
     position: relative;
-    background-image: url('/assets/images/background-login.jpg');
     background-size: cover;
     overflow: auto;
     min-height: 102vh!important;
-}
-
-.login-panel{
-    border: 10px solid #f1f1f1;
-    background-color: #f1f1f194;
+    background-position: center;
 }
 
 img{
